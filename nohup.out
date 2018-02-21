@@ -1,0 +1,358 @@
+Initiating CommandBot
+Its a valid command or in the list
+Its a valid command or in the list
+/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_TRUNCATED_WRONG_VALUE_FOR_FIELD: Incorrect string value: '\xEF\xBC\xA8\xEF\xBD\x81...' for column 'name' at row 1
+    at Query.Sequence._packetToError (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:52:14)
+    at Query.ErrorPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    --------------------
+    at Protocol._enqueue (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:145:48)
+    at Connection.query (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:208:25)
+    at Query._callback (/home/cokere/nodeprojects/CommandBot/run.js:33:8)
+    at Query.Sequence.end (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:88:24)
+    at Query._handleFinalResultPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:139:8)
+    at Query.EofPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:123:8)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+CommandBot started
+Initiating CommandBot
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Is a command but not in list or not a valid command.
+/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_TRUNCATED_WRONG_VALUE_FOR_FIELD: Incorrect string value: '\xEF\xBC\xA8\xEF\xBD\x81...' for column 'name' at row 1
+    at Query.Sequence._packetToError (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:52:14)
+    at Query.ErrorPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    --------------------
+    at Protocol._enqueue (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:145:48)
+    at Connection.query (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:208:25)
+    at Query._callback (/home/cokere/nodeprojects/CommandBot/run.js:33:8)
+    at Query.Sequence.end (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:88:24)
+    at Query._handleFinalResultPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:139:8)
+    at Query.EofPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:123:8)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+CommandBot started
+Initiating CommandBot
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_TRUNCATED_WRONG_VALUE_FOR_FIELD: Incorrect string value: '\xEF\xBC\xA8\xEF\xBD\x81...' for column 'name' at row 1
+    at Query.Sequence._packetToError (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:52:14)
+    at Query.ErrorPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    --------------------
+    at Protocol._enqueue (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:145:48)
+    at Connection.query (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:208:25)
+    at Query._callback (/home/cokere/nodeprojects/CommandBot/run.js:33:8)
+    at Query.Sequence.end (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:88:24)
+    at Query._handleFinalResultPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:139:8)
+    at Query.EofPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:123:8)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+CommandBot started
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Sent message: http://chukwumaokere.com/test/profile.php?bnet=Pinót-1367 with profile name Pinót-1367
+{ Error: 404 Not Found
+    at PassThrough.stream.once (/home/cokere/nodeprojects/CommandBot/node_modules/snekfetch/src/index.js:217:25)
+    at Object.onceWrapper (events.js:293:19)
+    at emitNone (events.js:91:20)
+    at PassThrough.emit (events.js:188:7)
+    at endReadableNT (_stream_readable.js:975:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickCallback (internal/process/next_tick.js:104:9)
+  request: 
+   ClientRequest {
+     domain: null,
+     _events: 
+      { abort: [Object],
+        aborted: [Object],
+        error: [Object],
+        prefinish: [Function: requestOnPrefinish] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     output: [],
+     outputEncodings: [],
+     outputCallbacks: [],
+     outputSize: 0,
+     writable: true,
+     _last: true,
+     upgrading: false,
+     chunkedEncoding: false,
+     shouldKeepAlive: false,
+     useChunkedEncodingByDefault: false,
+     sendDate: false,
+     _removedHeader: {},
+     _contentLength: 0,
+     _hasBody: true,
+     _trailer: '',
+     finished: true,
+     _headerSent: true,
+     socket: 
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: null,
+        _parent: null,
+        _host: 'chukwumaokere.com',
+        _readableState: [Object],
+        readable: false,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 8,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: false,
+        allowHalfOpen: false,
+        destroyed: true,
+        _bytesDispatched: 198,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        parser: null,
+        _httpMessage: [Circular],
+        read: [Function],
+        _consuming: true,
+        _idleNext: null,
+        _idlePrev: null,
+        _idleTimeout: -1 },
+     connection: 
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: null,
+        _parent: null,
+        _host: 'chukwumaokere.com',
+        _readableState: [Object],
+        readable: false,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 8,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: false,
+        allowHalfOpen: false,
+        destroyed: true,
+        _bytesDispatched: 198,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        parser: null,
+        _httpMessage: [Circular],
+        read: [Function],
+        _consuming: true,
+        _idleNext: null,
+        _idlePrev: null,
+        _idleTimeout: -1 },
+     _header: 'GET /test/images/Pin%C3%B3t-1367.png HTTP/1.1\r\nHost: chukwumaokere.com\r\nUser-Agent: snekfetch/3.2.3 (+https://github.com/devsnek/snekfetch.git)\r\nAccept-Encoding: gzip, deflate\r\nConnection: close\r\n\r\n',
+     _headers: 
+      { host: 'chukwumaokere.com',
+        'user-agent': 'snekfetch/3.2.3 (+https://github.com/devsnek/snekfetch.git)',
+        'accept-encoding': 'gzip, deflate' },
+     _headerNames: 
+      { host: 'Host',
+        'user-agent': 'User-Agent',
+        'accept-encoding': 'Accept-Encoding' },
+     _onPendingData: null,
+     agent: 
+      Agent {
+        domain: null,
+        _events: [Object],
+        _eventsCount: 1,
+        _maxListeners: undefined,
+        defaultPort: 80,
+        protocol: 'http:',
+        options: [Object],
+        requests: {},
+        sockets: [Object],
+        freeSockets: {},
+        keepAliveMsecs: 1000,
+        keepAlive: false,
+        maxSockets: Infinity,
+        maxFreeSockets: 256 },
+     socketPath: undefined,
+     timeout: undefined,
+     method: 'GET',
+     path: '/test/images/Pin%C3%B3t-1367.png',
+     _ended: true,
+     res: 
+      IncomingMessage {
+        _readableState: [Object],
+        readable: false,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 1,
+        _maxListeners: undefined,
+        socket: [Object],
+        connection: [Object],
+        httpVersionMajor: 1,
+        httpVersionMinor: 1,
+        httpVersion: '1.1',
+        complete: true,
+        headers: [Object],
+        rawHeaders: [Object],
+        trailers: {},
+        rawTrailers: [],
+        upgrade: false,
+        url: '',
+        method: null,
+        statusCode: 404,
+        statusMessage: 'Not Found',
+        client: [Object],
+        _consuming: true,
+        _dumped: false,
+        req: [Circular],
+        read: [Function] },
+     aborted: undefined,
+     timeoutCb: null,
+     upgradeOrConnect: false,
+     parser: null,
+     maxHeadersCount: null,
+     followRedirects: undefined },
+  body: <Buffer 3c 21 44 4f 43 54 59 50 45 20 48 54 4d 4c 20 50 55 42 4c 49 43 20 22 2d 2f 2f 49 45 54 46 2f 2f 44 54 44 20 48 54 4d 4c 20 32 2e 30 2f 2f 45 4e 22 3e ... >,
+  text: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL /test/images/Pinót-1367.png was not found on this server.</p>\n<hr>\n<address>Apache/2.4.18 (Ubuntu) Server at chukwumaokere.com Port 80</address>\n</body></html>\n',
+  ok: false,
+  headers: 
+   { date: 'Tue, 05 Sep 2017 13:34:56 GMT',
+     server: 'Apache/2.4.18 (Ubuntu)',
+     'content-length': '308',
+     connection: 'close',
+     'content-type': 'text/html; charset=iso-8859-1' },
+  status: 404,
+  statusText: 'Not Found' }
+Its a valid command or in the list
+Sent message: http://chukwumaokere.com/test/profile.php?bnet=Pinót-1367 with profile name Pinót-1367
+Sent image:  of Pinót-1367
+Its a valid command or in the list
+Sent message: http://chukwumaokere.com/test/profile.php?bnet=Rosé-11914 with profile name Rosé-11914
+Sent image:  of Rosé-11914
+Its a valid command or in the list
+Sent message: http://chukwumaokere.com/test/profile.php?bnet=Martini-11586 with profile name Martini-11586
+Sent image:  of Martini-11586
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Setting bots status to: dnd
+Its a valid command or in the list
+Setting bots status to: online
+Its a valid command or in the list
+Setting bots game to: with myself.
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_TRUNCATED_WRONG_VALUE_FOR_FIELD: Incorrect string value: '\xE2\x99\xAA\xE2\x99\xAA' for column 'name' at row 1
+    at Query.Sequence._packetToError (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:52:14)
+    at Query.ErrorPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    --------------------
+    at Protocol._enqueue (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:145:48)
+    at Connection.query (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:208:25)
+    at Query._callback (/home/cokere/nodeprojects/CommandBot/run.js:37:8)
+    at Query.Sequence.end (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:88:24)
+    at Query._handleFinalResultPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:139:8)
+    at Query.EofPacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/sequences/Query.js:123:8)
+    at Protocol._parsePacket (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/cokere/nodeprojects/CommandBot/node_modules/mysql/lib/Connection.js:103:28)
+Initiating CommandBot
+Its a valid command or in the list
+Initiating CommandBot
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+events.js:163
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: unexpected server response (520)
+    at ClientRequest._req.on (/home/cokere/nodeprojects/CommandBot/node_modules/ws/lib/WebSocket.js:650:26)
+    at emitOne (events.js:96:13)
+    at ClientRequest.emit (events.js:191:7)
+    at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:522:21)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:99:23)
+    at TLSSocket.socketOnData (_http_client.js:411:20)
+    at emitOne (events.js:96:13)
+    at TLSSocket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at TLSSocket.Readable.push (_stream_readable.js:136:10)
+CommandBot started
+Initiating CommandBot
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+Its a valid command or in the list
+events.js:163
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: write EPIPE
+    at exports._errnoException (util.js:1050:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:814:14)
+CommandBot started

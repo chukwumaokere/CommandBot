@@ -1,0 +1,91 @@
+function twoRandomScores(){
+    var score1;
+    var score2;
+	
+	Math.floor((Math.random() * 52) + 1);
+    
+    score1 = Math.random(0, 10);
+    score2 = Math.random(0, 10);
+    
+    return score1 + score2; 
+}
+
+
+var deal = Math.floor((Math.random() * 52) + 1); 
+var final = deal % 13;
+
+console.log(deal);
+console.log(final);
+
+var outcome;
+var deal = Math.floor((Math.random() * 40) + 1); 
+
+if (deal % 2 === 0){
+    outcome = "even";
+}
+if (deal % 2 !== 0){
+    outcome = "odd";   
+}
+
+
+var card = Math.floor((Math.random() * 52) + 1); 
+
+
+
+
+//////////
+var deal = Math.floor((Math.random() * 52) + 1); 
+
+// Declare two variables 
+// For both variables, assign values gotten by calling the function
+
+
+    
+var drawCards = function (){
+    var score1;
+    var score2;
+	
+	Math.floor((Math.random() * 52) + 1);
+    
+    score1 = Math.random(0, 10);
+    score2 = Math.random(0, 10);
+    
+    return score1 + score2; 
+};
+
+    var card1 =drawCards();
+    var card2= drawCards();
+	
+	//////////////////////////////
+	
+// Our deal function will return one random card
+var deal = function () {
+    var card = Math.floor((Math.random() * 52) + 1); 
+    
+    return card;
+}
+
+
+
+// Declare our two variables card1 and card2
+var card1 = deal();
+var card2 = deal();
+
+function getValue(card){
+	return card;
+}
+
+// Define a function called score, which will assign points by
+// adding up the cards: 
+var score = function(score1, score2){
+       return card1 + card2;
+}
+
+console.log("You have cards " + card1 + " and " + card2 +
+        " for a score of " + score());
+		
+		
+		
+		
+		
+	
