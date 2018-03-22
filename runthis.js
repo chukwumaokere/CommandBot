@@ -18,7 +18,7 @@ var con = mysql.createConnection({
 const token = "";
 
 bot.on('ready', () => {
- // bot.user.setGame("without you");
+  bot.user.setGame("in Nikki's NSFW");
  // bot.user.setStatus("online");
 });
 
@@ -53,10 +53,42 @@ else{
 			});
 		}
 	});
-	
+/*
+	 if (checkMessage.indexOf('fart') > -1){
+                        var isValidCommand = true;
+                        var command = checkMessage[1];
+                        con.query(`SELECT * FROM commandcount WHERE commandname LIKE "%fart%"`, function (err, results, fields){
+                                var count = results[0].count;
+                                var newcount = count+1;
+                                con.query(`UPDATE commandcount SET count = '${newcount}' WHERE commandname LIKE "%fart%"`);
+				message.channel.send(`THARR SHE BLOWS!! :runner: :dash:`);
+				message.channel.send(`<@!273994855578075136> has now farted ${newcount} times! :nauseated_face:`);
+                        });
+                }
+
+*/
 	var checkMessage = message.content.split(" ");
 	var isCommand = false;
+	var countedwords = checkMessage.length;
+	var start = 0;
+//fart commands
+if (checkMessage[0] != "~check"){
+//console.log(checkMessage[0]);
+	while (start < countedwords){
+		var checkforfart = checkMessage[start].search(/fart/);
+		if (checkforfart == 0 && writerid != '297125330110382082' && checkMessage[0].charAt(0) != "~check"){
+			con.query(`SELECT * FROM commandcount WHERE commandname LIKE "%fart%"`, function (err, results, fields){
+					var count = results[0].count;
+					var newcount = count+1;
+					con.query(`UPDATE commandcount SET count = '${newcount}' WHERE commandname LIKE "%fart%"`);
+					message.channel.send(`THARR SHE BLOWS!! :runner: :dash:`);
+					message.channel.send(`<@!273994855578075136> has now farted ${newcount} times! :nauseated_face:`);
+			});
+		}
+		start++;
 
+	}	
+}
 	//Make sure the first character is ~
 	if (checkMessage[0].charAt(0) == "~"){
 		var isCommand = true;
@@ -93,6 +125,27 @@ else{
 			}
 			
 		}
+/*
+		if (checkMessage.indexOf('fart') > -1){
+			var isValidCommand = true;
+			var command = checkMessage[1];
+                        con.query(`SELECT * FROM commandcount WHERE commandname LIKE "%fart%"`, function (err, results, fields){
+                                var count = results[0].count;
+				var newcount = count+1;
+				con.query(`UPDATE commandcount SET count = '${newcount}' WHERE commandname LIKE "%fart%"`);
+                        });
+		}
+*/
+		if (checkMessage[0] == "~check"){
+			var isValidCommand = true;
+			var command = checkMessage[1];
+			con.query(`SELECT * FROM commandcount WHERE commandname LIKE "%${command}%"`, function (err, results, fields){
+				var count = results[0].count;
+				message.delete();
+				message.channel.send(`<@!273994855578075136> has farted ${count} times! :nauseated_face:`);
+			});
+		}
+
 /*
 		if(checkMessage[0] == "~profile" && typeof checkMessage[1] === 'string' && checkMessage[0] !== ' '){
 			var isValidCommand = true;
