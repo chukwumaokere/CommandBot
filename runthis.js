@@ -11,7 +11,7 @@ var con = mysql.createConnection({
 	host: "localhost",
 	user: "",
 	password: "",
-	database: ""
+	database: "discord"
 });
 
 // ADD YOUR BOT'S TOKEN HERE
@@ -75,7 +75,7 @@ else{
 if (checkMessage[0] != "~check"){
 //console.log(checkMessage[0]);
 	while (start < countedwords){
-		var checkforfart = checkMessage[start].search(/fart/);
+		var checkforfart = checkMessage[start].toLowerCase().search(/fart/);
 		if (checkforfart == 0 && writerid != '297125330110382082' && checkMessage[0].charAt(0) != "~check"){
 			con.query(`SELECT * FROM commandcount WHERE commandname LIKE "%fart%"`, function (err, results, fields){
 					var count = results[0].count;
@@ -88,6 +88,26 @@ if (checkMessage[0] != "~check"){
 		start++;
 
 	}	
+}
+var startTwo = 0;
+console.log(checkMessage[0]);
+if (checkMessage[0] != "~check"){
+	//console.log('here');
+        while (startTwo < countedwords){
+                var checkforkacto = checkMessage[startTwo].toLowerCase().search(/kactosophobia/);
+		if (checkforkacto == -1){ var checkforkacto = checkMessage[startTwo].search(/Kactosophobia/);} 
+		//console.log('found');
+                if (checkforkacto == 0 && writerid != '297125330110382082' && checkMessage[0].charAt(0) != "~check"){
+                       // con.query(`SELECT * FROM commandcount WHERE commandname LIKE "%fart%"`, function (err, results, fields){
+                             //           var count = results[0].count;
+                               //         var newcount = count+1;
+                                 //       con.query(`UPDATE commandcount SET count = '${newcount}' WHERE commandname LIKE "%fart%"`);
+                                        message.channel.send(`Kactosophobia (from Greek kaktos, "cardoon") is the fear of cacti, a branch of botanophobia, fear of plants. Cacti are one of the more fearful plants as they have pricks that can stab anyone who touches it. People getting stabbed by pricks on a cactus may lead to kactosophobia, or even by learning verbally about it. Sufferers may be afraid that cacti may grow in their yard. Kactosophobia cases are more widespread in deserts where cacti thrive.`);
+                       // });
+                }
+                startTwo++;
+
+        }
 }
 	//Make sure the first character is ~
 	if (checkMessage[0].charAt(0) == "~"){
