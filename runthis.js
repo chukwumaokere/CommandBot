@@ -19,7 +19,7 @@ var con = mysql.createConnection({
 const token = "";
 
 bot.on('ready', () => {
-  bot.user.setGame("");
+  bot.user.setGame("in Nikki's NSFW");
  // bot.user.setStatus("online");
 });
 
@@ -1391,7 +1391,7 @@ Q: ${pollQ}`;
 						isValidCommand = true;
 						comAsList = com.toString().replace(/,/g, "\n");
 						//message.channel.send(`Here is the list of commands:\n${comAsList}`);
-						var commandList = '\`\`\` ~commands (Obviously) \n ~help \n ~poll (Creates a votable poll) \n ~profile (Creates a nice picture of your overwatch Profile only if you have it saved) \n ~profile BattleNet#3333 (Retrieves someones Overwatch profile) \n ~set battletag Something#2121 (Set your battletag) \n ~battlenet (Creates a nice picture of someones battlenet) \n ~callmedaddy \n ~succ \n ~check farts \n ~remember \n ~roll (Roll a d# die) \n ~credits (Check your credit balance) \n ~startgame blackjack # (Under construction) \n ~add/addcredits (Only works for Pinót ) \n ~flip (Flips a coin with a bet amount to win double or nothing) \n ~dailies/~daily (Gives you 200 credits every 24 hours) \n Saying "Kactosophobia" triggers the Kactosophobia command \n Saying "fart" anywhere triggers the fart command \n Saying "furry" triggers the furry command \n !hoo \n !fuck \n !neko \n PM Soundbot "!list" for a list of sound commands \`\`\`';
+						var commandList = '\`\`\` ~commands (Obviously) \n ~help \n ~poll (Creates a votable poll) \n ~profile (Creates a nice picture of your overwatch Profile only if you have it saved) \n ~profile BattleNet#3333 (Retrieves someones Overwatch profile) \n ~set battletag Something#2121 (Set your battletag) \n ~battlenet (Creates a nice picture of someones battlenet) \n ~callmedaddy \n ~succ \n ~check farts \n ~remember \n ~roll (Roll a d# die) \n ~credits (Check your credit balance) \n ~startgame blackjack # (Under construction) \n ~add/addcredits (Only works for Pinót ) \n ~flip (Flips a coin with a bet amount to win double or nothing) \n ~dailies/~daily (Gives you 200 credits every 24 hours) \n Saying "Kactosophobia" triggers the Kactosophobia command \n Saying "fart" anywhere triggers the fart command \n Saying "furry" triggers the furry command \n !hoo \n !fuck \n !neko \n !help (SoundBot will PM you) \n PM Soundbot "!list" for a list of sound commands \`\`\`';
 						message.channel.send(`The list of commands are:  ${commandList}`);
 						break;
 					}
