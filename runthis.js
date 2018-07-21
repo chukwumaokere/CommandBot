@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const https = require('https');
 var fs = require("fs");
 var utf8 = require('utf8');
 var oldAuthor;
@@ -18,7 +19,7 @@ var con = mysql.createConnection({
 const token = "";
 
 bot.on('ready', () => {
-  bot.user.setGame("in Nikki's NSFW");
+  bot.user.setGame("");
  // bot.user.setStatus("online");
 });
 
@@ -109,6 +110,27 @@ if (checkMessage[0] != "~check"){
 
         }
 }
+var startThree = 0;
+if (checkMessage[0] != "~check"){
+        //console.log('here');
+        while (startThree < countedwords){
+		var authid = message.author.id;
+                var authtag = "<@!" + authid + ">";
+                var checkforfurry = checkMessage[startThree].toLowerCase().search(/furry/);
+                if (checkforfurry == -1){ var checkforfurry = checkMessage[startThree].search(/Furry/);}
+                //console.log('found');
+                if (checkforfurry == 0 && writerid != '297125330110382082' && checkMessage[0].charAt(0) != "~check"){
+                       // con.query(`SELECT * FROM commandcount WHERE commandname LIKE "%fart%"`, function (err, results, fields){
+                             //           var count = results[0].count;
+                               //         var newcount = count+1;
+                                 //       con.query(`UPDATE commandcount SET count = '${newcount}' WHERE commandname LIKE "%fart%"`);
+                                        message.channel.send(`<@!148437198759395330>, <@!252667124785348608>! Mommy, Daddy! ${authtag} tried to say the banned word! :sob: KILL THEM`);
+                       // });
+                }
+                startThree++;
+
+        }
+}
 	//Make sure the first character is ~
 	if (checkMessage[0].charAt(0) == "~"){
 		var isCommand = true;
@@ -118,6 +140,172 @@ if (checkMessage[0] != "~check"){
 		var isCommand = true;
                 var isValidCommand = true;
 		message.channel.send("", {files: ["http://chukwumaokere.com/test/hoo.png"]}).then(m => console.log(`HOO`)).catch(console.error);
+	}
+	if (checkMessage[0].toLowerCase() == "!neko"){
+		var isCommand = true;
+		var isValidCommand = true;
+		
+
+		var authid = message.author.id;
+		var authtag = "<@!" + authid + ">";
+		var desc = '...E-Enjoy, ' + authtag + '!';
+
+		var mentioned = message.mentions.users.first();
+		if (mentioned){
+			var mentionedid = mentioned.id;
+			var mentionedtag = "<@!" + mentionedid + ">";
+		}
+
+		var endpoint = checkMessage[1]; 
+		var action = '';
+		var actionable = ['spank', 'tickle', 'bj', 'poke', 'slap', 'blowjob', 'kiss', 'cuddle', 'feed', 'cum', 'hug', 'pat'];
+ 
+		if (actionable.indexOf(endpoint) > -1 && mentionedtag){
+			action = endpoint + 'ed';
+			if (action == 'slaped'){
+				action = 'slapped';
+			}
+			if (action == 'pokeed'){
+				action = 'poked';
+			}
+			if (action == 'feeded'){
+				action = 'fed';
+			}
+			if (action == 'cuddleed'){
+				action = 'cuddled';
+			}
+			if (action == 'tickleed'){
+				action = 'tickled';
+			}		
+			desc = authtag + " has " + action + " " + mentionedtag + ".";
+			if (action == 'cumed'){
+				action = 'came';
+				 desc = authtag + " came on " + mentionedtag + ".";
+			}
+			if (action == 'blowjobed'){
+				desc = authtag + " has given " + mentionedtag + " a blowjob.";
+			}
+			if (action == 'huged'){
+				desc = authtag + " hugged " + mentionedtag + ".";
+			}			
+			if (action == 'pated'){
+				desc = authtag + " patted " +  mentionedtag + "'s head.";
+			}
+		}
+
+		if (endpoint == '' || !endpoint || endpoint == ' '){
+			message.channel.send("Please specify what type of lewds you want, b-baka! I'm not going to do it for you!");
+			message.channel.send('`Type "!neko help" for more info`');
+			endpoint = false;
+		}
+		if (endpoint == 'help'){
+			message.channel.send("OwO naughty, eh? Weww you can choose fwom these: `'feet', 'yuri', 'trap', 'futanari', 'hololewd', 'lewdkemo', 'solog', 'feetg', 'cum', 'erokemo', 'les', 'wallpaper', 'lewdk', 'ngif', 'meow', 'tickle', 'lewd', 'feed', 'gecg', 'eroyuri', 'eron', 'cum_jpg', 'bj', 'nsfw_neko_gif', 'solo', 'kemonomimi', 'nsfw_avatar', 'gasm', 'poke', 'anal', 'slap', 'hentai', 'avatar', 'erofeet', 'holo', 'keta', 'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg', 'pwankg', 'classic', 'kuni', 'waifu', 'pat', '8ball', 'kiss', 'femdom', 'neko', 'spank', 'cuddle', 'erok', 'fox_girl', 'boobs', 'Random_hentai_gif', 'smallboobs', 'hug', 'ero'`");
+			endpoint = false;
+		}
+
+		var url = "https://nekos.life/api/v2/img/" + endpoint;
+		if (endpoint){
+			https.get(url, (resp) => {
+				let data = '';
+
+				resp.on('data', (chunk) => {
+					data += chunk;
+				});
+
+				resp.on('end', () => {
+					var res = JSON.parse(data).url;
+					console.log(JSON.parse(data).url);
+					message.channel.startTyping();
+					//message.channel.send("", {files: [res]});
+					if (res === undefined){
+						message.channel.send("I couldn't find what you're looking for :sob:");
+						message.channel.send(" Please try again, I'll try harder next time!");
+					}else{
+					message.channel.send(
+								{
+								  "embed": {
+								    "description": desc,
+								    "color": 13605273,
+								    "footer": {
+								      "text": "Pinót's Bot"
+								    },
+								    "image": {
+								      "url": res
+								    }   
+								  }
+								});
+					}
+
+					message.channel.stopTyping(true); message.channel.stopTyping();
+				});
+			}).on("error", (err) => {
+				console.log("Error: " + err.message);
+				var errormess = "Error: " + err.message;
+				message.channel.startTyping();
+				message.channel.send(errormess);
+				message.channel.stopTyping();
+			});
+		}
+		
+	}
+	if (checkMessage[0].toLowerCase() == "!fuck"){
+		if(checkMessage[1]){
+			var authid = message.author.id;
+			var authtag = "<@!" + authid + ">"; 
+			var desc = '...E-Enjoy, ' + authtag + '!';
+			
+			var mentioned = message.mentions.users.first();
+			if (mentioned){
+				var mentionedid = mentioned.id;
+				var mentionedtag = "<@!" + mentionedid + ">";
+				desc =  authtag + " has fucked " + mentionedtag + " like this:";
+			}
+			var validep = ['Random_hentai_gif', 'classic', 'nsfw_neko_gif', 'bj'];
+
+			var endpoint = validep[Math.floor(Math.random()*validep.length)];
+
+			var url = "https://nekos.life/api/v2/img/" + endpoint;
+			if (endpoint){
+				https.get(url, (resp) => {
+					let data = '';
+					
+					resp.on('data', (chunk) => {
+						data += chunk;
+					});
+					
+					resp.on('end', () => {
+						var res = JSON.parse(data).url;
+						console.log(JSON.parse(data).url);
+						message.channel.startTyping();
+						//message.channel.send("", {files: [res]});
+						message.channel.send(   
+									{ 
+									  "embed": {
+									    "description": desc,
+									    "color": 13605273,
+									    "footer": {
+									      "text": "Pinót's Bot"
+									    },
+									    "image": {
+									      "url": res
+									    }
+									  }
+									});
+						message.channel.stopTyping(true);
+					});
+				}).on("error", (err) => {
+					console.log("Error: " + err.message);
+					var errormess = "Error: " + err.message;
+					message.channel.startTyping();
+					message.channel.send(errormess);
+					message.channel.stopTyping();
+				});
+			}
+
+		}else{
+			message.channel.send("Please include someone to share the action with! Selfish, baka :rage:");
+		}
+
 	}
 	if(isCommand == true){
 		if(checkMessage[0] == "~createcommand")
@@ -1202,7 +1390,9 @@ Q: ${pollQ}`;
 					{
 						isValidCommand = true;
 						comAsList = com.toString().replace(/,/g, "\n");
-						message.channel.send(`Here is the list of commands:\n${comAsList}`);
+						//message.channel.send(`Here is the list of commands:\n${comAsList}`);
+						var commandList = '\`\`\` ~commands (Obviously) \n ~help \n ~poll (Creates a votable poll) \n ~profile (Creates a nice picture of your overwatch Profile only if you have it saved) \n ~profile BattleNet#3333 (Retrieves someones Overwatch profile) \n ~set battletag Something#2121 (Set your battletag) \n ~battlenet (Creates a nice picture of someones battlenet) \n ~callmedaddy \n ~succ \n ~check farts \n ~remember \n ~roll (Roll a d# die) \n ~credits (Check your credit balance) \n ~startgame blackjack # (Under construction) \n ~add/addcredits (Only works for Pinót ) \n ~flip (Flips a coin with a bet amount to win double or nothing) \n ~dailies/~daily (Gives you 200 credits every 24 hours) \n Saying "Kactosophobia" triggers the Kactosophobia command \n Saying "fart" anywhere triggers the fart command \n Saying "furry" triggers the furry command \n !hoo \n !fuck \n !neko \n PM Soundbot "!list" for a list of sound commands \`\`\`';
+						message.channel.send(`The list of commands are:  ${commandList}`);
 						break;
 					}
 				if(com[i] == "~help")
