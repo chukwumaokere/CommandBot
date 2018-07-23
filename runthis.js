@@ -249,6 +249,8 @@ if (checkMessage[0] != "~check"){
 		
 	}
 	if (checkMessage[0].toLowerCase() == "!fuck" || checkMessage[0].toLowerCase() == "~fuck"){
+		var isValidCommand = true;
+                var isCommand = true;
 		if(checkMessage[1]){
 			var authid = message.author.id;
 			var authtag = "<@!" + authid + ">"; 
@@ -308,7 +310,7 @@ if (checkMessage[0] != "~check"){
 
 	}
 	//actionable command shortcuts
-	if (checkMessage[0].charAt(0) == "~" || checkMessage[0].charAt(0) == "!"){
+	if ((checkMessage[0].charAt(0) == "~" && checkMessage[0] != '~fuck') || (checkMessage[0].charAt(0) == "!" && checkMessage[0] != '!fuck') ){
 		var actionable = ['spank', 'tickle', 'bj', 'poke', 'slap', 'blowjob', 'kiss', 'cuddle', 'feed', 'cum', 'hug', 'pat'];
 	
 		var authid = message.author.id;
@@ -323,10 +325,10 @@ if (checkMessage[0] != "~check"){
                         var mentionedid = mentioned.id;
                         var mentionedtag = "<@!" + mentionedid + ">";
                 }
-		if (checkMessage[0].charAt(0) == "~"){
+		if (checkMessage[0].charAt(0) == "~" && checkMessage[0] != '~fuck'){
                		action = checkMessage[0].replace('~', '');
                 }
-                if ( checkMessage[0].charAt(0) == "!"){
+                if ( checkMessage[0].charAt(0) == "!" && checkMessage[0] != "!fuck"){
                         action = checkMessage[0].replace('!', '');
                 }
 		if ( actionable.indexOf(action) > -1){
@@ -360,7 +362,7 @@ if (checkMessage[0] != "~check"){
 					action = 'came';
 					 desc = authtag + " came on " + mentionedtag + ".";
 				}
-				if (action == 'blowjobed' || action == 'bj'){
+				if (action == 'blowjobed' || action == 'bjed'){
 					desc = authtag + " has given " + mentionedtag + " a blowjob.";
 				}
 				if (action == 'huged'){
@@ -418,8 +420,12 @@ if (checkMessage[0] != "~check"){
 
 				//message.channel.send(desc);
 			}else{
-				message.channel.send("Include someone to do it to, idiot!");
+				if (action != "slap"){
+					message.channel.send("Include someone to do it to, idiot!");
+				}
 			}
+		}else{
+			return;
 		}
 	}
 
