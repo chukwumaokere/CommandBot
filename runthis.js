@@ -258,7 +258,7 @@ if (checkMessage[0] != "~check"){
 			if (mentioned){
 				var mentionedid = mentioned.id;
 				var mentionedtag = "<@!" + mentionedid + ">";
-				desc =  authtag + " has fucked " + mentionedtag + " like this:";
+				desc =  authtag + " fucked " + mentionedtag + " like this:";
 			}
 			var validep = ['Random_hentai_gif', 'classic', 'nsfw_neko_gif', 'bj'];
 
