@@ -182,7 +182,7 @@ if (checkMessage[0] != "~check"){
 				action = 'came';
 				 desc = authtag + " came on " + mentionedtag + ".";
 			}
-			if (action == 'blowjobed'){
+			if (action == 'blowjobed' || action == 'bjed'){
 				desc = authtag + " has given " + mentionedtag + " a blowjob.";
 			}
 			if (action == 'huged'){
@@ -307,6 +307,111 @@ if (checkMessage[0] != "~check"){
 		}
 
 	}
+	//actionable command shortcuts
+	if (checkMessage[0].charAt(0) == "~"){
+		var actionable = ['~spank', '~tickle', '~bj', '~poke', '~slap', '~blowjob', '~kiss', '~cuddle', '~feed', '~cum', '~hug', '~pat'];
+	
+		var authid = message.author.id;
+                var authtag = "<@!" + authid + ">";
+
+                var desc = '!';
+		var action = '';
+		var endpoint = '';
+
+                var mentioned = message.mentions.users.first();
+                if (mentioned){
+                        var mentionedid = mentioned.id;
+                        var mentionedtag = "<@!" + mentionedid + ">";
+                }
+		if ( actionable.indexOf(checkMessage[0]) > -1){
+			var isValidCommand = true;
+ 			var isCommand = true;
+			if(mentionedtag){
+				endpoint = checkMessage[0].replace('~', '');
+				action = endpoint + 'ed';
+				if (action == 'slaped'){
+					action = 'slapped';
+				}
+				if (action == 'pokeed'){
+					action = 'poked';
+				}
+				if (action == 'feeded'){
+					action = 'fed';
+				}
+				if (action == 'cuddleed'){
+					action = 'cuddled';
+				}
+				if (action == 'tickleed'){
+					action = 'tickled';
+				}
+				desc = authtag + " has " + action + " " + mentionedtag + ".";
+				if (action == 'cumed'){
+					action = 'came';
+					 desc = authtag + " came on " + mentionedtag + ".";
+				}
+				if (action == 'blowjobed' || action == 'bj'){
+					desc = authtag + " has given " + mentionedtag + " a blowjob.";
+				}
+				if (action == 'huged'){
+					desc = authtag + " hugged " + mentionedtag + ".";
+				}
+				if (action == 'pated'){
+					desc = authtag + " patted " +  mentionedtag + "'s head.";
+				}
+
+				//Execution
+				var url = "https://nekos.life/api/v2/img/" + endpoint;
+				if (endpoint){
+					https.get(url, (resp) => {
+						let data = '';
+
+						resp.on('data', (chunk) => {
+							data += chunk;
+						});
+
+						resp.on('end', () => {
+							var res = JSON.parse(data).url;
+							console.log(JSON.parse(data).url);
+							message.channel.startTyping();
+							//message.channel.send("", {files: [res]});
+							if (res === undefined){
+								message.channel.send("I couldn't find what you're looking for :sob:");
+								message.channel.send(" Please try again, I'll try harder next time!");
+							}else{
+							message.channel.send(
+										{
+										  "embed": {
+										    "description": desc,
+										    "color": 13605273,
+										    "footer": {
+										      "text": "Pinót's Bot"
+										    },
+										    "image": {
+										      "url": res
+										    }
+										  }
+										});
+							}
+
+							message.channel.stopTyping(true); message.channel.stopTyping();
+						});
+					}).on("error", (err) => {
+						console.log("Error: " + err.message);
+						var errormess = "Error: " + err.message;
+						message.channel.startTyping();
+						message.channel.send(errormess);
+						message.channel.stopTyping();
+					});
+				}
+				//Execution end
+
+				//message.channel.send(desc);
+			}else{
+				message.channel.send("Include someone to do it to, idiot!");
+			}
+		}
+	}
+
 	if(isCommand == true){
 		if(checkMessage[0] == "~createcommand")
 		{
@@ -421,6 +526,7 @@ if (checkMessage[0] != "~check"){
 				}
 			}
 		}
+		/*
 		if(checkMessage[0] == "~slap"){
                         var isValidCommand = true;
                         var commandauth = message.author.username;
@@ -438,7 +544,7 @@ if (checkMessage[0] != "~check"){
                         //chan.leave();
 
                 }    
-
+		*/
 		if(checkMessage[0] == "~profile"){
 			console.log("at least you're in profile");
 			var isValidCommand = true;
@@ -1391,7 +1497,7 @@ Q: ${pollQ}`;
 						isValidCommand = true;
 						comAsList = com.toString().replace(/,/g, "\n");
 						//message.channel.send(`Here is the list of commands:\n${comAsList}`);
-						var commandList = '\`\`\` ~commands (Obviously) \n ~help \n ~poll (Creates a votable poll) \n ~profile (Creates a nice picture of your overwatch Profile only if you have it saved) \n ~profile BattleNet#3333 (Retrieves someones Overwatch profile) \n ~set battletag Something#2121 (Set your battletag) \n ~battlenet (Creates a nice picture of someones battlenet) \n ~callmedaddy \n ~succ \n ~check farts \n ~remember \n ~roll (Roll a d# die) \n ~credits (Check your credit balance) \n ~startgame blackjack # (Under construction) \n ~add/addcredits (Only works for Pinót ) \n ~flip (Flips a coin with a bet amount to win double or nothing) \n ~dailies/~daily (Gives you 200 credits every 24 hours) \n Saying "Kactosophobia" triggers the Kactosophobia command \n Saying "fart" anywhere triggers the fart command \n Saying "furry" triggers the furry command \n !hoo \n !fuck \n !neko \n !help (SoundBot will PM you) \n PM Soundbot "!list" for a list of sound commands \`\`\`';
+						var commandList = '\`\`\` ~commands (Obviously) \n ~help \n ~poll (Creates a votable poll) \n ~profile (Creates a nice picture of your overwatch Profile only if you have it saved) \n ~profile BattleNet#3333 (Retrieves someones Overwatch profile) \n ~set battletag Something#2121 (Set your battletag) \n ~battlenet (Creates a nice picture of someones battlenet) \n ~callmedaddy \n ~succ \n ~check farts \n ~remember \n ~roll (Roll a d# die) \n ~credits (Check your credit balance) \n ~startgame blackjack # (Under construction) \n ~add/addcredits (Only works for Pinót ) \n ~flip (Flips a coin with a bet amount to win double or nothing) \n ~dailies/~daily (Gives you 200 credits every 24 hours) \n Saying "Kactosophobia" triggers the Kactosophobia command \n Saying "fart" anywhere triggers the fart command \n Saying "furry" triggers the furry command \n !hoo \n !fuck \n !neko \n !help (SoundBot will PM you) \n PM Soundbot "!list" for a list of sound commands \n Actionable commands: "~spank, ~tickle, ~bj, ~poke, ~slap, ~blowjob, ~kiss, ~cuddle, ~feed, ~cum, ~hug, ~pat". \n To use these type the action and @Someone. \n Example: "~slap @Pinót"\`\`\`';
 						message.channel.send(`The list of commands are:  ${commandList}`);
 						break;
 					}
