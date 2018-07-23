@@ -141,7 +141,7 @@ if (checkMessage[0] != "~check"){
                 var isValidCommand = true;
 		message.channel.send("", {files: ["http://chukwumaokere.com/test/hoo.png"]}).then(m => console.log(`HOO`)).catch(console.error);
 	}
-	if (checkMessage[0].toLowerCase() == "!neko"){
+	if (checkMessage[0].toLowerCase() == "!neko" || checkMessage[0].toLowerCase() == "~neko"){
 		var isCommand = true;
 		var isValidCommand = true;
 		
@@ -199,7 +199,7 @@ if (checkMessage[0] != "~check"){
 			endpoint = false;
 		}
 		if (endpoint == 'help'){
-			message.channel.send("OwO naughty, eh? Weww you can choose fwom these: `'feet', 'yuri', 'trap', 'futanari', 'hololewd', 'lewdkemo', 'solog', 'feetg', 'cum', 'erokemo', 'les', 'wallpaper', 'lewdk', 'ngif', 'meow', 'tickle', 'lewd', 'feed', 'gecg', 'eroyuri', 'eron', 'cum_jpg', 'bj', 'nsfw_neko_gif', 'solo', 'kemonomimi', 'nsfw_avatar', 'gasm', 'poke', 'anal', 'slap', 'hentai', 'avatar', 'erofeet', 'holo', 'keta', 'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg', 'pwankg', 'classic', 'kuni', 'waifu', 'pat', '8ball', 'kiss', 'femdom', 'neko', 'spank', 'cuddle', 'erok', 'fox_girl', 'boobs', 'Random_hentai_gif', 'smallboobs', 'hug', 'ero'`");
+			message.channel.send("OwO naughty, eh? Weww you can choose fwom these: \n\n`'feet', 'yuri', 'trap', 'futanari', 'hololewd', 'lewdkemo', 'solog', 'feetg', 'cum', 'erokemo', 'les', 'wallpaper', 'lewdk', 'ngif', 'meow', 'tickle', 'lewd', 'feed', 'gecg', 'eroyuri', 'eron', 'cum_jpg', 'bj', 'nsfw_neko_gif', 'solo', 'kemonomimi', 'nsfw_avatar', 'gasm', 'poke', 'anal', 'slap', 'hentai', 'avatar', 'erofeet', 'holo', 'keta', 'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg', 'pwankg', 'classic', 'kuni', 'waifu', 'pat', '8ball', 'kiss', 'femdom', 'neko', 'spank', 'cuddle', 'erok', 'fox_girl', 'boobs', 'Random_hentai_gif', 'smallboobs', 'hug', 'ero'` \n\n Or use one of these neat actionabwe commands: \n\n `spank, tickle, bj, poke, slap, blowjob, kiss, cuddle, feed, cum, hug, pat` \n\n To use these, type the action and @Someone. \n  Example: `!slap @Pinót\`");
 			endpoint = false;
 		}
 
@@ -248,7 +248,7 @@ if (checkMessage[0] != "~check"){
 		}
 		
 	}
-	if (checkMessage[0].toLowerCase() == "!fuck"){
+	if (checkMessage[0].toLowerCase() == "!fuck" || checkMessage[0].toLowerCase() == "~fuck"){
 		if(checkMessage[1]){
 			var authid = message.author.id;
 			var authtag = "<@!" + authid + ">"; 
@@ -308,8 +308,8 @@ if (checkMessage[0] != "~check"){
 
 	}
 	//actionable command shortcuts
-	if (checkMessage[0].charAt(0) == "~"){
-		var actionable = ['~spank', '~tickle', '~bj', '~poke', '~slap', '~blowjob', '~kiss', '~cuddle', '~feed', '~cum', '~hug', '~pat'];
+	if (checkMessage[0].charAt(0) == "~" || checkMessage[0].charAt(0) == "!"){
+		var actionable = ['spank', 'tickle', 'bj', 'poke', 'slap', 'blowjob', 'kiss', 'cuddle', 'feed', 'cum', 'hug', 'pat'];
 	
 		var authid = message.author.id;
                 var authtag = "<@!" + authid + ">";
@@ -323,11 +323,22 @@ if (checkMessage[0] != "~check"){
                         var mentionedid = mentioned.id;
                         var mentionedtag = "<@!" + mentionedid + ">";
                 }
-		if ( actionable.indexOf(checkMessage[0]) > -1){
+		if (checkMessage[0].charAt(0) == "~"){
+               		action = checkMessage[0].replace('~', '');
+                }
+                if ( checkMessage[0].charAt(0) == "!"){
+                        action = checkMessage[0].replace('!', '');
+                }
+		if ( actionable.indexOf(action) > -1){
 			var isValidCommand = true;
  			var isCommand = true;
 			if(mentionedtag){
-				endpoint = checkMessage[0].replace('~', '');
+				if (checkMessage[0].charAt(0) == "~"){
+					endpoint = checkMessage[0].replace('~', '');
+				}
+				if ( checkMessage[0].charAt(0) == "!"){
+					endpoint = checkMessage[0].replace('!', '');
+				}
 				action = endpoint + 'ed';
 				if (action == 'slaped'){
 					action = 'slapped';
@@ -1497,7 +1508,7 @@ Q: ${pollQ}`;
 						isValidCommand = true;
 						comAsList = com.toString().replace(/,/g, "\n");
 						//message.channel.send(`Here is the list of commands:\n${comAsList}`);
-						var commandList = '\`\`\` ~commands (Obviously) \n ~help \n ~poll (Creates a votable poll) \n ~profile (Creates a nice picture of your overwatch Profile only if you have it saved) \n ~profile BattleNet#3333 (Retrieves someones Overwatch profile) \n ~set battletag Something#2121 (Set your battletag) \n ~battlenet (Creates a nice picture of someones battlenet) \n ~callmedaddy \n ~succ \n ~check farts \n ~remember \n ~roll (Roll a d# die) \n ~credits (Check your credit balance) \n ~startgame blackjack # (Under construction) \n ~add/addcredits (Only works for Pinót ) \n ~flip (Flips a coin with a bet amount to win double or nothing) \n ~dailies/~daily (Gives you 200 credits every 24 hours) \n Saying "Kactosophobia" triggers the Kactosophobia command \n Saying "fart" anywhere triggers the fart command \n Saying "furry" triggers the furry command \n !hoo \n !fuck \n !neko \n !help (SoundBot will PM you) \n PM Soundbot "!list" for a list of sound commands \n Actionable commands: "~spank, ~tickle, ~bj, ~poke, ~slap, ~blowjob, ~kiss, ~cuddle, ~feed, ~cum, ~hug, ~pat". \n To use these type the action and @Someone. \n Example: "~slap @Pinót"\`\`\`';
+						var commandList = '\`\`\` ~commands (Obviously) \n ~help \n ~poll (Creates a votable poll) \n ~profile (Creates a nice picture of your overwatch Profile only if you have it saved) \n ~profile BattleNet#3333 (Retrieves someones Overwatch profile) \n ~set battletag Something#2121 (Set your battletag) \n ~battlenet (Creates a nice picture of someones battlenet) \n ~callmedaddy \n ~succ \n ~check farts \n ~remember \n ~roll (Roll a d# die) \n ~credits (Check your credit balance) \n ~startgame blackjack # (Under construction) \n ~add/addcredits (Only works for Pinót ) \n ~flip (Flips a coin with a bet amount to win double or nothing) \n ~dailies/~daily (Gives you 200 credits every 24 hours) \n Saying "Kactosophobia" triggers the Kactosophobia command \n Saying "fart" anywhere triggers the fart command \n Saying "furry" triggers the furry command \n !hoo \n !fuck \n !neko \n !help (SoundBot will PM you) \n PM Soundbot "!list" for a list of sound commands \n Actionable commands: "spank, tickle, bj, poke, slap, blowjob, kiss, cuddle, feed, cum, hug, pat". \n To use these type the action and @Someone. \n Example: "!slap @Pinót"\`\`\`';
 						message.channel.send(`The list of commands are:  ${commandList}`);
 						break;
 					}
