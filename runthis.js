@@ -310,7 +310,7 @@ if (checkMessage[0] != "~check"){
 
 	}
 	//actionable command shortcuts
-	if ((checkMessage[0].charAt(0) == "~" && checkMessage[0] != '~fuck') || (checkMessage[0].charAt(0) == "!" && checkMessage[0] != '!fuck') ){
+	if ((checkMessage[0].charAt(0) == "~" && checkMessage[0] != '~fuck' && checkMessage[0] != '~neko') || (checkMessage[0].charAt(0) == "!" && checkMessage[0] != '!fuck' && checkMessage[0] != '!neko') ){
 		var actionable = ['spank', 'tickle', 'bj', 'poke', 'slap', 'blowjob', 'kiss', 'cuddle', 'feed', 'cum', 'hug', 'pat'];
 	
 		var authid = message.author.id;
