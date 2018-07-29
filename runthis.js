@@ -310,7 +310,10 @@ if (checkMessage[0] != "~check"){
 
 	}
 	//actionable command shortcuts
-	if ((checkMessage[0].charAt(0) == "~" && checkMessage[0] != '~fuck' && checkMessage[0] != '~neko') || (checkMessage[0].charAt(0) == "!" && checkMessage[0] != '!fuck' && checkMessage[0] != '!neko') ){
+	var actionables = ['spank', 'tickle', 'bj', 'poke', 'slap', 'blowjob', 'kiss', 'cuddle', 'feed', 'cum', 'hug', 'pat'];
+	var isActionable = actionables.indexOf(checkMessage[0].replace('~', '')) > -1 ? true : false ;
+	var isActionableEx = actionables.indexOf(checkMessage[0].replace('!', '')) > -1 ? true : false ;
+	if ((checkMessage[0].charAt(0) == "~" && checkMessage[0] != '~fuck' && checkMessage[0] != '~neko' ) && isActionable  || (checkMessage[0].charAt(0) == "!" && checkMessage[0] != '!fuck' && checkMessage[0] != '!neko' && isActionableEx) ){
 		var actionable = ['spank', 'tickle', 'bj', 'poke', 'slap', 'blowjob', 'kiss', 'cuddle', 'feed', 'cum', 'hug', 'pat'];
 	
 		var authid = message.author.id;
@@ -667,6 +670,7 @@ if (checkMessage[0] != "~check"){
 		if (checkMessage[0] == "~poll" && !checkMessage[1] || checkMessage[0] == "~poll" && checkMessage[1] == ''){
 			var isValidCommand = true;
 			message.channel.send(`The "~poll" command must contain the question and all possible answers. Like this: "~poll Where should we go next?; Germany; Italy; France;"`);
+			console.log("poll fail");
 		}
 		if (checkMessage[0] == "~poll" && checkMessage[1] || checkMessage[0] == "~poll" && !checkMessage[1] == '' || checkMessage[0] == "~poll" && !checkMessage[1] == ' '){
 			var isValidCommand = true;
