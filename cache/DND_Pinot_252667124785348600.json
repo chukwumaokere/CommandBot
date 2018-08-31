@@ -1,0 +1,28 @@
+{
+  "user_id": "Pinot",
+  "mode": "DND",
+  "sessions": [
+    {
+      "id": "6cc98a888b61903873ee799a61d84e58cf1787919ba973352a6849d21d0114c1",
+      "data": {
+        "date_start": "2018-08-31 14:12:44",
+        "date_end": "2018-08-31 14:41:56",
+        "story": "You were born a cleric of the high order to a fortunate family bloodline. \nYou go into the Inn to rest",
+        "last_episode": "You go into the Inn to rest",
+        "stats": {},
+        "inventory": {}
+      }
+    },
+    {
+      "id": "50da0106bdc08eaa76acf99b3c13dd091b1b8d6e9e22c70debea79e20a9f7aa2",
+      "data": {
+        "date_start": "2018-08-31 20:02:33",
+        "date_end": "",
+        "story": "You were born a cleric of the high order to a fortunate family bloodline. \nYou go into the Inn to rest \nYou awoke in a cold sweat and attempted to run to the bathroom. Roll d20 for strength check",
+        "last_episode": "Roll d20",
+        "stats": {},
+        "inventory": {}
+      }
+    }
+  ]
+}
