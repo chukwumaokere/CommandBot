@@ -431,6 +431,54 @@ if (checkMessage[0] != "~check"){
 			return;
 		}
 	}
+	//Secret Santa
+        if(checkMessage[0] == "!secretsanta" || checkMessage[0] == "!ss" || checkMessage[0] == "~secretsanta" || checkMessage[0] == "~ss"){
+                var isValidCommand = true;
+                var isCommand = true;
+                var mentioned = message.mentions.users;
+                var mentionedusers = [];
+                mentioned.forEach(function(user){
+                        var username = user.username;
+                        var userid = user.id;
+                        var userinfo = [];
+                        userinfo.id = userid;
+                        userinfo.username = username;
+                        mentionedusers.push(userinfo);
+                });
+                console.log(mentionedusers);
+                var usedusers = [];
+/*
+                mentionedusers.forEach(function(mu){
+                        var currentuser = bot.users.get(mu.id);
+                        var randomkey = Math.floor(Math.random()*mentionedusers.length);
+                        var chosenuser = mentionedusers[randomkey];
+
+                        var selfuser = false;
+                        var alreadyused = false;
+                        
+                        if (mu.id == chosenuser.id){
+                                selfuser = true;
+                        }
+                        if (usedusers.indexOf(chosenuser.id) > -1) {
+                                alreadyused = true;
+                        }
+
+                        while (mu.id == chosenuser.id || chosenuser !== undefined || alreadyused == true || selfuser == true){
+                                var randomkey = Math.floor(Math.random()*mentionedusers.length)
+                                var chosenuser = mentionedusers[randomkey];
+                        }
+
+                        usedusers.push(chosenuser.id);
+                        
+                        if (selfuser == false && alreadyused == false){
+                                if (currentuser.bot == false){
+                                        currentuser.send("Happy Holidays! You are " + chosenuser.username + "'s Secret Santa! Be sure to get them something nice! :santa: :mrs_claus: :christmas_tree:");
+                                }
+                        }
+                        //bot.users.get(mu.id).send("You were mentioned!");
+                });
+*/
+        }
 
 	if(isCommand == true){
 		if(checkMessage[0] == "~createcommand")
@@ -1661,5 +1709,24 @@ function diff_hours(dt2, dt1)
   return Math.abs(Math.round(diff));
   
  }
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
 bot.login(token);
