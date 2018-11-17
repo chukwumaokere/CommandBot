@@ -445,8 +445,33 @@ if (checkMessage[0] != "~check"){
                         userinfo.username = username;
                         mentionedusers.push(userinfo);
                 });
-                console.log(mentionedusers);
-                var usedusers = [];
+		var a = mentionedusers;
+                var b = mentionedusers;
+
+                var rand = Math.floor(Math.random() * (a.length - 1)) + 1;
+
+                var c = a.map(function(e, i) {
+                        var l = (i + rand) % a.length;
+                        return [a[i], b[l]];
+                });
+
+                c.forEach(function(pair){
+                        //console.log(pair[0]);
+                        var gifter = pair[0];
+                        var giftername = gifter.username;
+                        var gifterid = gifter.id;
+
+                        var giftee = pair[1];
+                        var gifteename = giftee.username;
+                        var gifteeid = giftee.id;
+
+                        var gifteruser = bot.users.get(gifterid);      
+                        if (gifteruser.bot == false){
+                                gifteruser.send("Happy Holidays! You are "  + gifteename + "'s (<@!" + gifteeid + ">) Secret Santa! Be sure to get them something nice! :santa: :mrs_claus: :christmas_tree:");
+                        }
+
+                        console.log(`${giftername} has ${gifteename}`);
+                });
 /*
                 mentionedusers.forEach(function(mu){
                         var currentuser = bot.users.get(mu.id);
