@@ -54,6 +54,24 @@ else{
 			});
 		}
 	});
+	//profile pic scamozzer
+	var nikki_id = ''; //id of user who's profile pic you want to copy
+        var nikki = bot.users.get(nikki_id);
+        var nikkisPic = nikki.avatarURL;
+        con.query(`SELECT * FROM nikkis_pic WHERE id = ${nikki_id}`, function (err, result, fields) {
+                if (result[0] === undefined){
+                        con.query(`INSERT INTO nikkis_pic VALUES ("${nikki_id}", "${nikkisPic}")`);
+                        console.log('Added nikkis picture to the database: ' + nikkisPic);
+                        var pinot = bot.users.get(''); //put your user ID
+                        pinot.send('Added Nikki\'s profile picture to the database: ' + nikkisPic);
+                }
+                if (result[0] !== undefined && nikkisPic != result[0].pic_url){
+                        con.query(`UPDATE nikkis_pic SET pic_url = "${nikkisPic}" WHERE id = ${nikki_id}`);
+                        console.log('Updated Nikki\'s profile picture to ' + nikkisPic);
+                        var pinot = bot.users.get(''); //put your user ID
+                        pinot.send('Nikki has changed her profile picture to ' + nikkisPic + ' \n Update yours now!');
+                }
+        });
 /*
 	 if (checkMessage.indexOf('fart') > -1){
                         var isValidCommand = true;
