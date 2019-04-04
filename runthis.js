@@ -18,6 +18,24 @@ var con = mysql.createConnection({
 // ADD YOUR BOT'S TOKEN HERE
 const token = "";
 
+bot.on('presenceUpdate', async(update) => {
+        console.log(update);
+        console.log(update.user.presence);
+        console.log(update.frozenPresence);
+        if (update.user.id == ''){// if you want to check statuses of a certain person/bot to know if a bot went offline or something. 
+                var usersName = update.user.username;
+                var previousPresence = update.frozenPresence;
+                var previousStatus = previousPresence.status;
+                var previousGame = previousPresence.game.name;
+                var currentPresence = update.user.presence;
+                var currentStatus = currentPresence.status;
+                var currentGame = currentPresence.game.name;
+
+                var me = bot.users.get('');
+                me.send(`${usersName}'s status has changed from **${previousStatus}: ${previousGame}** to **${currentStatus}: ${currentGame}**`);
+        }
+});
+
 bot.on('ready', () => {
   bot.user.setGame("in Nikki's NSFW");
  // bot.user.setStatus("online");
