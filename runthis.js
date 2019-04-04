@@ -19,20 +19,30 @@ var con = mysql.createConnection({
 const token = "";
 
 bot.on('presenceUpdate', async(update) => {
-        console.log(update);
-        console.log(update.user.presence);
-        console.log(update.frozenPresence);
-        if (update.user.id == ''){// if you want to check statuses of a certain person/bot to know if a bot went offline or something. 
-                var usersName = update.user.username;
-                var previousPresence = update.frozenPresence;
-                var previousStatus = previousPresence.status;
-                var previousGame = previousPresence.game.name;
-                var currentPresence = update.user.presence;
-                var currentStatus = currentPresence.status;
-                var currentGame = currentPresence.game.name;
+        //console.log(update);
+        //console.log(update.user.presence);
+        //console.log(update.frozenPresence);
+	if (update.guild.id == ''){ //enter 1 guild the bot is in, so you you don't get 50 messages if the bot is in 50 guilds.
+                if (update.user.id == ''){ //insert the ID of the bot whos presence is important to you. For example to know if your bot has gone offline and you want a PM: enter a Bot's ID (not this one)
+                        var usersName = update.user.username;
 
-                var me = bot.users.get('');
-                me.send(`${usersName}'s status has changed from **${previousStatus}: ${previousGame}** to **${currentStatus}: ${currentGame}**`);
+                        var previousPresence = update.frozenPresence;
+                        var previousStatus = previousPresence.status;
+                        var previousGame = "None";
+                        if (previousPresence.game && previousPresence.game !== null){
+                                previousGame = previousPresence.game.name;
+                        }
+
+                        var currentPresence = update.user.presence;
+                        var currentStatus = currentPresence.status;
+                        var currentGame = "None";
+                        if (currentPresence.game && currentPresence.game !== null){
+                                currentGame = currentPresence.game.name;
+                        }
+
+                        var me = bot.users.get(''); 
+                        me.send(`${usersName}'s status has changed from **${previousStatus}: ${previousGame}** to **${currentStatus}: ${currentGame}**`);
+                }
         }
 });
 
