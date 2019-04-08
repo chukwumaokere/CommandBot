@@ -40,8 +40,28 @@ bot.on('presenceUpdate', async(update) => {
                                 currentGame = currentPresence.game.name;
                         }
 
+			/*Date Stuff start*/
+                        var chicagoTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"});//Change to your time zone or leave empty for UTC or change .toLocalString to .toISOString
+                        chicagoTime = new Date(chicagoTime);
+                        //console.log('Chicago time: '+chicagoTime)
+
+                        //console.log(toLocalTime());
+
+                        var MyDate = new Date();
+
+                        var MyDateString = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-' + ('0' + MyDate.getDate()).slice(-2);;
+                        var MyTimeString = ('0' + chicagoTime.getHours()).slice(-2) + ":" + ('0' + chicagoTime.getMinutes()).slice(-2) + ":" + ('0' + chicagoTime.getSeconds()).slice(-2);
+
+                        //MyDate.setDate(MyDate.getDate() + 20);
+
+                        //MyDateString = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-' + ('0' + MyDate.getDate()).slice(-2);
+
+                        //console.log(MyDateString + ' ' + MyTimeString);
+                        /*Date Stuff end*/
+                        var curdate = MyDateString + ' ' + MyTimeString;
+
                         var me = bot.users.get(''); 
-                        me.send(`${usersName}'s status has changed from **${previousStatus}: ${previousGame}** to **${currentStatus}: ${currentGame}**`);
+                        me.send(`**${curdate}** \u2014 ${usersName}'s status has changed from **${previousStatus}: ${previousGame}** to **${currentStatus}: ${currentGame}**`);
                 }
         }
 });
