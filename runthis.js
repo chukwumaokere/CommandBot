@@ -39,29 +39,47 @@ bot.on('presenceUpdate', async(update) => {
                         if (currentPresence.game && currentPresence.game !== null){
                                 currentGame = currentPresence.game.name;
                         }
+			var err;
+                        var isStreaming;
+                        var notifyStreaming;
+
+                        try{
+                                isStreaming = currentPresence.game.streaming;
+                        }
+                        catch(erro){
+                                err += erro;
+                        }
+                        try{
+                                notifyStreaming = (currentPresence.game.streaming != previousPresence.game.streaming) ? true : false;
+                        }
+                        catch(erro){
+                                err += erro;
+                        }
 
 			/*Date Stuff start*/
                         var chicagoTime = new Date().toLocaleString("en-US", {timeZone: "America/Chicago"});//Change to your time zone or leave empty for UTC or change .toLocalString to .toISOString
                         chicagoTime = new Date(chicagoTime);
-                        //console.log('Chicago time: '+chicagoTime)
-
-                        //console.log(toLocalTime());
 
                         var MyDate = new Date();
 
                         var MyDateString = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-' + ('0' + MyDate.getDate()).slice(-2);;
                         var MyTimeString = ('0' + chicagoTime.getHours()).slice(-2) + ":" + ('0' + chicagoTime.getMinutes()).slice(-2) + ":" + ('0' + chicagoTime.getSeconds()).slice(-2);
-
-                        //MyDate.setDate(MyDate.getDate() + 20);
-
-                        //MyDateString = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-' + ('0' + MyDate.getDate()).slice(-2);
-
-                        //console.log(MyDateString + ' ' + MyTimeString);
                         /*Date Stuff end*/
-                        var curdate = MyDateString + ' ' + MyTimeString;
 
-                        var me = bot.users.get(''); 
-                        me.send(`**${curdate}** \u2014 ${usersName}'s status has changed from **${previousStatus}: ${previousGame}** to **${currentStatus}: ${currentGame}**`);
+                        var curdate = MyDateString + ' ' + MyTimeString;
+			var me = bot.users.get(''); //Enter your ID from discord
+			var announcements = bot.channels.get(''); //ID of the announcements channel
+
+			if(isStreaming === true && notifyStreaming === true){
+                                var url = currentPresence.game.url;
+                                announcements.send(`@everyone, look! ${usersName} is now streaming ${currentGame} live at: ${url}`);
+                        }
+                        if (err && err != null){
+                                console.log(`${err}`);
+                        }
+			if ((previousGame != currentGame) || (previousStatus != currentStatus)){
+	                        me.send(`**${curdate}** \u2014 ${usersName}'s status has changed from **${previousStatus}: ${previousGame}** to **${currentStatus}: ${currentGame}**`);
+			}
                 }
         }
 });
