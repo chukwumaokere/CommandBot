@@ -110,8 +110,9 @@ const requestHandler = (request, response) => {
                     var d_u_n = result[0].d_user_name;
 
                     var announcements = bot.channels.get(d_ch_id);
-
-                    announcements.send(`@everyone, look! ${d_u_n} is now live at: ${twitch_url} Come give them some support! :heart_eyes:`);
+                    if(announcements){
+                        announcements.send(`@everyone, look! ${d_u_n} is now live at: ${twitch_url} Come give them some support! :heart_eyes:`);
+                    }
                 }
             });
 
