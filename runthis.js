@@ -86,6 +86,52 @@ bot.on('presenceUpdate', async(update) => {
 
 bot.on('ready', () => {
   bot.user.setGame("in Nikki's NSFW");
+//Twitch Announcement
+const requestHandler = (request, response) => {
+    if (request.method == 'POST'){
+        var body = '';
+        request.on('data', function (data){
+
+            body+=data;
+            var j = JSON.parse(body);
+            console.log(j);
+            var game_id = j['game_id'];
+            var title = j['title'];
+            var thumbnail_url = j['thumbnail_url'];
+            var user_name = j['user_name'];
+            var viewer_count = j['viewer_count'];
+            var twitch_url = "https://twitch.tv/" + user_name;
+            var user_id = j['user_id'];
+            con.query(`SELECT * FROM twitch_announcements WHERE t_user_id = ${user_id}`, function(err, result, fields){
+                if (result[0] !== undefined){
+                    var d_g_id = result[0].d_guild_id;
+                    var d_ch_id = result[0].d_channel_id;
+                    var d_ch_n = result[0].d_channel_name;
+                    var d_u_n = result[0].d_user_name;
+
+                    var announcements = bot.channels.get(d_ch_id);
+
+                    announcements.send(`@everyone, look! ${d_u_n} is now live at: ${twitch_url} Come give them some support! :heart_eyes:`);
+                }
+            });
+
+        })
+    }
+    response.end()
+}
+
+const server = http.createServer(requestHandler)
+
+server.listen(port, (err) => {
+  if (err) {
+    return console.log('Something bad happened', err)
+  }
+
+  console.log(`Server is listening on ${port}`)
+})
+
+
+//Twitch Announcement
  // bot.user.setStatus("online");
 });
 
@@ -156,6 +202,23 @@ else{
 	var isCommand = false;
 	var countedwords = checkMessage.length;
 	var start = 0;
+
+//Twitch Announcement Command
+if (checkMessage[0] == "!twitchsetup"){
+    var channel_name = checkMessage[1];
+    var c_n = channel_name.replace("#", "");
+    var _auth_code = checkMessage[2];
+
+    var user_id = message.author.id;
+    var user_name = message.author.username;
+    var channel_id = c_n.replace('<','');
+    channel_id = channel_id.replace('>','');
+    console.log(`channel id is: ${channel_id}`);
+
+    con.query(`UPDATE twitch_announcements SET d_user_id = '${user_id}', d_user_name = '${user_name}', d_channel_id = '${channel_id}' WHERE auth_code = '${_auth_code}'`);
+}
+
+//Twitch Announcement Command
 //fart commands
 if (checkMessage[0] != "~check"){
 //console.log(checkMessage[0]);
