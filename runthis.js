@@ -220,6 +220,8 @@ if (checkMessage[0] == "!twitchsetup"){
     if(announcements){
        con.query(`UPDATE twitch_announcements SET d_user_id = '${user_id}', d_user_name = '${user_name}', d_channel_id = '${channel_id}' WHERE auth_code = '${_auth_code}'`);
        message.channel.send(`:tools: Your twitch setup is complete! I'll post in ${channel_name } everytime you go live on twitch!`);
+    }else{
+       message.channel.send(`:x: Uh oh. Something went wrong, I couldn't find that channel in this server. Are you sure you're in the right place?`);
     } 
 }
 
