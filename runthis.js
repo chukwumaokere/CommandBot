@@ -216,7 +216,11 @@ if (checkMessage[0] == "!twitchsetup"){
     channel_id = channel_id.replace('>','');
     console.log(`channel id is: ${channel_id}`);
 
-    con.query(`UPDATE twitch_announcements SET d_user_id = '${user_id}', d_user_name = '${user_name}', d_channel_id = '${channel_id}' WHERE auth_code = '${_auth_code}'`);
+    var announcements = bot.channels.get(channel_id);
+    if(announcements){
+       con.query(`UPDATE twitch_announcements SET d_user_id = '${user_id}', d_user_name = '${user_name}', d_channel_id = '${channel_id}' WHERE auth_code = '${_auth_code}'`);
+       message.channel.send(`:tools: Your twitch setup is complete! I'll post in ${channel_name } everytime you go live on twitch!`);
+    } 
 }
 
 //Twitch Announcement Command
