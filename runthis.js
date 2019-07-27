@@ -86,7 +86,6 @@ bot.on('presenceUpdate', async(update) => {
 
 bot.on('ready', () => {
   bot.user.setGame("in Nikki's NSFW");
-//Twitch Announcement
 const requestHandler = (request, response) => {
     if (request.method == 'POST'){
         var body = '';
@@ -110,6 +109,7 @@ const requestHandler = (request, response) => {
                     var d_u_n = result[0].d_user_name;
 
                     var announcements = bot.channels.get(d_ch_id);
+                    console.log("Announcement channel is: " + announcements);
                     if(announcements){
                         announcements.send(`@everyone, look! ${d_u_n} is now live at: ${twitch_url} Come give them some support! :heart_eyes:`);
                     }
@@ -217,13 +217,17 @@ if (checkMessage[0] == "!twitchsetup"){
     console.log(`channel id is: ${channel_id}`);
 
     var announcements = bot.channels.get(channel_id);
-    if(announcements){
+    console.log("Requested announcement room is: " + announcements);
+    if(announcements !== undefined){
+       console.log("Announcment Room found! " + announcements);
        con.query(`UPDATE twitch_announcements SET d_user_id = '${user_id}', d_user_name = '${user_name}', d_channel_id = '${channel_id}' WHERE auth_code = '${_auth_code}'`);
        message.channel.send(`:tools: Your twitch setup is complete! I'll post in ${channel_name } everytime you go live on twitch!`);
     }else{
        message.channel.send(`:x: Uh oh. Something went wrong, I couldn't find that channel in this server. Are you sure you're in the right place?`);
-    } 
+    }
 }
+
+//Twitch Announcement Command
 
 //Twitch Announcement Command
 //fart commands
