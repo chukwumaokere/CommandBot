@@ -94,6 +94,7 @@ const requestHandler = (request, response) => {
             body+=data;
             var j = JSON.parse(body);
             console.log(j);
+
             var game_id = j['game_id'];
             var title = j['title'];
             var thumbnail_url = j['thumbnail_url'];
@@ -101,19 +102,83 @@ const requestHandler = (request, response) => {
             var viewer_count = j['viewer_count'];
             var twitch_url = "https://twitch.tv/" + user_name;
             var user_id = j['user_id'];
-            con.query(`SELECT * FROM twitch_announcements WHERE t_user_id = ${user_id}`, function(err, result, fields){
-                if (result[0] !== undefined){
-                    var d_g_id = result[0].d_guild_id;
-                    var d_ch_id = result[0].d_channel_id;
-                    var d_ch_n = result[0].d_channel_name;
-                    var d_u_n = result[0].d_user_name;
+            var start_time = j['started_at'];
+            var game_url = "https://api.twitch.tv/helix/games?id=" + game_id;
 
-                    var announcements = bot.channels.get(d_ch_id);
-                    console.log("Announcement channel is: " + announcements);
-                    if(announcements){
-                        announcements.send(`@everyone, look! ${d_u_n} is now live at: ${twitch_url} Come give them some support! :heart_eyes:`);
-                    }
-                }
+            var options = {
+                hostname: "api.twitch.tv",
+                path: "https://api.twitch.tv/helix/games?id=" + game_id,
+                headers: {
+                    'Client-ID': "",
+                },
+                method: "GET"
+            }
+        
+            const game_name = https.get(options, (resp) => {
+                //console.log(resp);
+                let data = '';
+                resp.on('data', (chunk) => {
+                    data += chunk;
+                });
+                resp.on('end', () => {
+                    var g = JSON.parse(data);
+                    var game_name =  g.data[0].name;
+                    var game_box_art = g.data[0].box_art_url;
+                    var thumbnail = thumbnail_url.replace('{width}', '320').replace('{height}', '180');
+                    var game_art = game_box_art.replace('{width}', '80').replace('{height}', '80');
+                    
+                    con.query(`SELECT * FROM twitch_announcements WHERE t_user_id = ${user_id}`, function(err, result, fields){
+                        if (result[0] !== undefined){   
+                            var d_g_id = result[0].d_guild_id;
+                            var d_ch_id = result[0].d_channel_id;
+                            var d_ch_n = result[0].d_channel_name;
+                            var d_u_n = result[0].d_user_name;
+                            var d_u_id = result[0].d_user_id;
+    
+                            var _author = bot.users.get(d_u_id);
+                            var _authorPic = _author.avatarURL;
+        
+                            var announcements = bot.channels.get(d_ch_id);
+                            console.log("Announcement channel is: " + announcements);
+                            if(announcements){
+                                var embed = {
+                                                "content": `Hey, look ${d_u_n}  is now live at: ${twitch_url} Come give them some support! :heart_eyes:`,
+                                                "embed": {
+                                                    "color": 13605273,
+                                                    "author": {
+                                                        "name": d_u_n,
+                                                        "icon_url": _authorPic 
+                                                    },
+                                                    "thumbnail": {
+                                                        "url": game_art
+                                                    },
+                                                    "title": title,
+                                                    "url": twitch_url,
+                                                    "image": {
+                                                        "url": thumbnail
+                                                    },
+                                                    "description": "",
+                                                    "fields": [{
+                                                                    "name": "Game",
+                                                                    "value": game_name,
+                                                                    "inline": true
+                                                                },
+                                {
+                                                                    "name": "Viewers",
+                                                                    "value": viewer_count,
+                                                                    "inline": true
+                                                                }]
+                                                }
+                                        }
+                               // announcements.send(`Hey, look! ${d_u_n} is now live at: ${twitch_url} Come give them some support! :heart_eyes:`);
+                                announcements.send(`Hey @everyone, look ${d_u_n} is now live at: ${twitch_url} ! Come give them some support! :heart_eyes:`,embed);
+                            }
+                        }
+                    });
+                });
+            });
+            game_name.on('error', (error) => {
+                console.log(error);
             });
 
         })
