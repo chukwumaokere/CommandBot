@@ -27,10 +27,10 @@ bot.on('guildMemberAdd', member => {
     let defChannel = guild.defaultMessageNotifications;
     if (greetingGuilds.includes(guildid)){
         if (guildid == '' ){ //Guild specific command
-            guild.channels.find(`name`, `general`).send(`Welcome to my channel! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`);
+            guild.channels.find(`name`, `general`).send(`Welcome to the kingdom, <@!${member_id}>! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`);
         }else{
             console.log(member + ' just joined');
-            guild.channels.find(`name`, `disco-bots`).send(`Welcome to my channel! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`);
+            guild.channels.find(`name`, `general`).send(`Welcome to the kingdom, <@!${member_id}>! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`);
         }
     }
 });
