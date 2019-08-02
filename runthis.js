@@ -18,6 +18,23 @@ var con = mysql.createConnection({
 // ADD YOUR BOT'S TOKEN HERE
 const token = "";
 
+//Greeting messages //Will be deprecated for `!welcomes #welcome <String>"greeting message"`
+const greetingGuilds = ['', '']; //Array of Guilds that want a greeting message whenever a user joins
+bot.on('guildMemberAdd', member => {
+    let guild = member.guild;
+    let guildid = guild.id;
+    let member_id = member.id
+    let defChannel = guild.defaultMessageNotifications;
+    if (greetingGuilds.includes(guildid)){
+        if (guildid == '' ){ //Guild specific command
+            guild.channels.find(`name`, `general`).send(`Welcome to my channel! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`);
+        }else{
+            console.log(member + ' just joined');
+            guild.channels.find(`name`, `disco-bots`).send(`Welcome to my channel! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`);
+        }
+    }
+});
+
 bot.on('presenceUpdate', async(update) => {
         //console.log(update);
         //console.log(update.user.presence);
