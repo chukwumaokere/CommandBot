@@ -1,6 +1,9 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const http = require('http');
 const https = require('https');
+const port = 13337; //port to run the webservice on
+
 var fs = require("fs");
 var utf8 = require('utf8');
 var oldAuthor;
@@ -34,7 +37,47 @@ bot.on('guildMemberAdd', member => {
         }
     }
 });
+bot.on('guildMemberAdd', member => {
+    let guild = member.guild;
+    let guildid = guild.id;
+    let member_id = member.id
+    let defChannel = guild.defaultMessageNotifications;
+    if (greetingGuilds.includes(guildid)){
+        if (guildid == ''){ //Enter a guild id here
+            guild.channels.find(`name`, `general`).send(`Welcome to the kingdom, <@!${member_id}>! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`); //You can change general to a different channel
+            try {
+                var role = guild.roles.find(`name`, `Followers`).id; //Change "Followers" to a role you want to assign
+                member.addRole(role).then(console.log).catch(console.error);
+            }
+            catch(err){
+                console.log(err);
+            }
+        }else if (guildid == ''){ //You can set messages for a different server here 
+            guild.channels.find(`name`, `disco-bots`).send(`Welcome to the kingdom, <@!${member_id}>! I'm so happy you're here :heart:. I hope you enjoy your stay! Let me know if you need anything!`); //change 'disco-bots' to a different text-channel
+            try {
+                var role = guild.roles.find(`name`, `Newbie`).id; //Change 'Newbie' to a role you created
+                member.addRole(role).then(console.log).catch(console.error);
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+    }
+});
 
+bot.on('guildMemberRemove', member => {
+    let member_id = member.id;
+    let guild = member.guild;
+    let guildid = guild.id;
+    if (greetingGuilds.includes(guildid)){
+        if (guildid == ''){ //A server id you want to track people leaving in
+            guild.channels.find(`name`, `general`).send(`<@!${member_id}>! has left the Kingdom. Farewell, traveler. Godspeed :cry:`); //Channel you want to send the user left message in
+        }else if (guildid == ''){ //Another server you may want to track people leaving in 
+            guild.channels.find(`name`, `disco-bots`).send(`<@!${member_id}>! has left the Kingdom. Farewell, traveler. Godspeed :cry:`); //The channel and user left message
+        }
+    }
+
+});
 bot.on('presenceUpdate', async(update) => {
         //console.log(update);
         //console.log(update.user.presence);
