@@ -170,6 +170,7 @@ const requestHandler = (request, response) => {
                 path: "https://api.twitch.tv/helix/games?id=" + game_id,
                 headers: {
                     'Client-ID': "",
+                    'Authorization': "",
                 },
                 method: "GET"
             }
