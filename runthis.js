@@ -196,9 +196,15 @@ const requestHandler = (request, response) => {
                             var d_u_n = result[0].d_user_name;
                             var d_u_id = result[0].d_user_id;
     
-                            var _author = bot.users.get(d_u_id);
-                            var _authorPic = _author.avatarURL;
-        
+                            var _author = bot.users.get(d_u_id); //NEED TO FIGURE OUT WHAT TO USE HERE. THIS NOW RETURNS UNDEFINED. 
+                            try{
+                               var _authorPic = _author.avatarURL;
+                            }catch(err){
+                                console.log(err);
+                                //var _authorPic = 'https://icons-for-free.com/iconfiles/png/128/avatar+person+profile+user+icon-1320166578424287581.png'; //MIGHT NEED TO HOST THIS LOCALLY.
+                                var _authorPic = 'https://cdn0.iconfinder.com/data/icons/free-social-media-set/24/discord-128.png';
+                            }
+
                             var announcements = bot.channels.get(d_ch_id);
                             console.log("Announcement channel is: " + announcements);
                             if(announcements){
